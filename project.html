@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+  =============================================================
+  PROJECT PAGE  (project.html)
+  =============================================================
+  This is ONE project's page. It has space for:
+    - a title
+    - images
+    - a description
+  ...which is exactly what the brief asks for.
+
+  WANT MORE THAN ONE PROJECT?
+    The easiest way: just tell Claude "add another project" — it will make
+    a new copy of this page AND a matching card on the home page, linked
+    together for you.
+
+    (By hand: duplicate this file, change the content in the copy, and
+    point a card in index.html at your new file.)
+  =============================================================
+-->
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- REPLACE: the project name -->
+  <title>Rowan — Charlie Pegg</title>
+  <!-- REPLACE: a one-line description search engines show -->
+  <meta name="description" content="Rowan, a DnD character designed by Charlie Pegg" />
+  <!-- The little icon in the browser tab (your sketch). -->
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-rowan">
+
+  <!-- Skip link: lets keyboard users jump straight to the main content. -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Same nav as the home page. The logo links home. -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="nav__logo">Charlie Pegg</a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="section container project">
+
+      <!-- A solid #0a0a0a box behind the text, so it stays readable over the background artwork. -->
+      <div class="project__panel">
+        <!-- The final Rowan design, floated to the right inside the box so the text wraps around it.
+             It's the same picture as the last image further down (which has the full description),
+             so this copy is hidden from screen readers. -->
+        <img class="project__panel-image" src="assets/rowan-final.jpg" alt="" aria-hidden="true" />
+
+        <!-- A link back to the list of projects -->
+        <a class="project__back" href="index.html#work">← Back to work</a>
+
+        <!-- REPLACE: the project title -->
+        <h1 class="project__title project__title--large"><img class="project__title-img" src="assets/rowan-title.png" alt="Rowan" /></h1>
+
+        <!-- REPLACE: short facts about the project -->
+        <p class="project__meta">Character Design · 2026</p>
+
+        <!-- ===== PROJECT DESCRIPTION ===== -->
+        <div class="project__description">
+          <!-- REPLACE: describe your project. What is it? Why did you make
+               it? How did you make it? What are you proud of? -->
+          <p>
+           I've always loved TTRPGs, and whenever I'm offered to join a new group I do my best to take it, so character design is something I try to improve upon when creating any new TTRPG character. This project is about my most recent addition to my treasure trove - <strong>Rowan!</strong> A non-binary human cleric with a family curse they are trying to find a cure for, but the true nature of this curse is more than meets the eye... (especially because they're blind.) <strong> With this project, I sought to design a character where upon a glance you can spy a few keen little details about them, their environment, and perhaps, the true nature of their curse.</strong>
+          </p>
+          
+          <p>
+            <strong>Skills utilised for this project: Character design - Illustration - MediBang - Collaboration - Iteration</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- ===== PROJECT IMAGES ===== -->
+      <!--
+        Add as many images as you like by copying an <img> line.
+        Replace the placeholder files in the assets folder with your own.
+      -->
+      <div class="project__gallery project__gallery--small">
+        <!-- Image 1 with a section beside it to write in. -->
+        <div class="project__row">
+          <img src="assets/rowan-sketches.jpg" alt="Black and white sketch sheet of early Rowan designs: a tall figure in a long cloak, a staff with an eye at the top, a figure in a tattered robe, and a figure with branches growing over the ribcage, with handwritten notes about what works and what doesn't" />
+          <div class="project__notes">
+            <!-- REPLACE: a short heading for this image, e.g. what stage of the design it shows -->
+            <h2 class="project__notes-title">First sketches of Rowan </h2>
+            <!-- REPLACE: write about this image in your own words. What were you
+                 working out here? What did you keep, and what did you change? -->
+            <p> <strong>For starters, I had to actually figure out who they were as I wanted their design to visually communicate some of their story.</strong> I knew I wanted a character dealing with a curse, but the nature of it was a whole other hassle to figure out, and since my friend really wanted to create a line up, I had to sketch ideas without many clear ideas of how to incorporate their specific story into it. However, I did have a few things to work with. <strong>First, I knew they were going to be a cleric,</strong> specifically a cleric that leans more into a healer aspect. <strong> Second, they had a curse, and I wanted that curse to obviously attack their eyes in some way. </strong> I also knew they were <strong>human. </strong>
+            </p>
+          </div>
+
+          <!-- Second box: it stretches across the full width, level with the margins of the page. -->
+          <div class="project__notes project__notes--wide">
+            <h2 class="project__notes-title">What this meant for their current design </h2>
+
+            <p> Since they're a human, that meant I didn't need to worry about any horns or ears beyond what I am used to. Furthermore, since the curse is one of the more significant aspects of their character, and since it's noted that it attacks their eyes, it is therefore <strong>something that needs to be obvious to the viewer upon looking at them.</strong> Beyond that, since they were a cleric (and I was aiming for something more magical), I would not need them to have too much in terms of armour. These were the things I was working with when I created these early designs. I also wanted there to be a bit of this idea of <strong>'fear of the unknown',</strong> so I also looked at different ways to cover the eyes.           
+            </p>
+          </div>
+        </div>
+
+        <!-- Image 2 with a section beside it to write in. Rows swap sides automatically (the CSS puts every second image on the right). -->
+        <div class="project__row">
+          <img src="assets/rowan-sketches-2.jpg" alt="Black and white sketch sheet of three Rowan outfit designs: a long tattered dress, a layered cloak with vines wrapped around the arms, and a veiled figure with a torn long sleeve, covered in handwritten notes about what works and what doesn't" />
+          <div class="project__notes">
+            <!-- REPLACE: a short heading for this image -->
+            <h2 class="project__notes-title">Second sketches of Rowan</h2>
+            <!-- REPLACE: write about this image in your own words. What changed
+                 from the first sketches? What did you decide to keep? -->
+            <p>I was originally planning to have a more detailed eye cover, but I found that I actually really loved the simplicity of the veil. And while I did like the branches growing out of the eyes, I preferred having them be smaller as I felt it created confusion as to what you were meant to look at first, and I felt like it'd be better to have the viewer notice the curse growing out of the chest first and then realise the same branches are growing where the eyes are so they can connect the two. I did think the brambles growing in a ribcage-like fashion could be interesting, but upon testing it, it didn't give the feeling of chaos that the disorganised brambles did, so I switched back to disorganised brambles.
+            </p>
+          </div>
+
+          <!-- Second box: full width, level with the margins of the page. -->
+          <div class="project__notes project__notes--wide">
+            <h3 class="project__notes-subtitle">Finalising the curse's nature and incorporating it into the design</h3>
+            <p>While working through the second sketches, I ended up with a more finalised version of what Rowan's story is and what the curse's nature is - <strong> a demon curse that mutates the body and mildly controls them, with the intention being to get the recipients to accept being a partner to the demon.</strong> Important note though, <strong>nobody who has gotten this curse is aware that that's the case,</strong> thinking it's just a curse to make them servants to a demon and that this 'Love God' <strong> (who's actually the demon that cursed them) </strong> is saving them by instead bringing their souls into their domain when the curse becomes too much and they need to die, but in reality the demon is just making them become willing partners through manipulation. Because of this new understanding of this story, <strong>I started leaning into designs that provided a bit of a wedding feeling to them in order to visually communicate that aspect of their story,</strong> leaning further into veils and flowy elements.</p>
+          </div>
+        </div>
+
+        <!-- Image 3 with a section beside it to write in (back on the left, since the sides alternate). -->
+        <div class="project__row">
+          <img src="assets/rowan-sketches-3.jpg" alt="Sketch sheet showing the Rowan design developing: a rough veiled figure annotated in black and pink handwriting, then two cleaner line drawings of the same figure with a veil, armour, flowers on the chest, a torn long robe and bare feet with vines around the ankles" />
+          <div class="project__notes">
+            <!-- REPLACE: a short heading for this image -->
+            <h2 class="project__notes-title">Finalising sketches of Rowan</h2>
+            <!-- REPLACE: write about this image in your own words. What did the pink
+                 notes change, and how did the design end up? -->
+            <p>While I did like that the new designs had more of a wedding aspect to them, I felt like the design needed improvement in a way that I couldn't quite figure out on my own. To resolve this, I went to my friend and asked if there was anything they could think of to help resolve this design. The pink lines are all of their recommendations for how to better resolve the design, which mostly involved cleaning up the silhouette and leaning into the design being more tattered and asymmetric. With few exceptions, I actioned their advice and ended up really liking the result. </p>
+          </div>
+
+          <!-- One big box across the full width (level with the page margins), split into three columns. -->
+          <div class="project__notes project__notes--wide">
+            <h2 class="project__notes-title project__notes-title--large">Actioning feedback and adding final details</h2>
+            <div class="project__columns">
+              <div class="project__column">
+                <h3 class="project__notes-subtitle">Designing the final veil</h3>
+                <p>I did change the flowers on the veil to the curse brambles because I felt flowers made the wedding aspect too obvious, and while I wanted the viewer to be able to get a feeling that there's some sort of wedding thing happening, I wanted it to be something that you don't immediately process. I also preferred the horn shaped brambles because with the knowledge that Rowan is basically being mutated to become a wedded partner to a demon, the horn shaped brambles being what holds the veil in place takes on a different meaning. </p>
+              </div>
+
+              <div class="project__column">
+                <h3 class="project__notes-subtitle">Designing the holy symbol</h3>
+                <p>For the holy symbol, I was originally going to do just a flower motif, but I felt that might make the fact that the love god was actually the demon too obvious because of the curse causing flowers to bloom out of the open spot on Rowan's chest. <strong>However, I still wanted it to have flower aspects so when it is revealed that the god is actually the demon, you can have the realisation that Rowan was wearing a symbol to the demon the whole time. </strong> I decided to mix the flower idea with a seashell (a symbol associated with Aphrodite), so that it could be read <strong>interchangeably</strong> and when Rowan says it's a seashell, you're not entirely sure if that's correct because it kinda looks like a flower. </p>
+              </div>
+
+              <div class="project__column">
+                <h3 class="project__notes-subtitle">Finalising the braces and brambles</h3>
+                <p>I added braces around the arms and had the brambles wrap around the ankles to give this subtle idea of shackles. The brambles sit on top of Rowan's feet because I remember hearing about a torture device that has spikes rest on the top of the feet that prevents people from running, same as how the demon is trying to prevent Rowan from escaping them. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image 4: a long strip of all the colour versions. It's too wide to sit beside the writing, so the writing goes underneath. -->
+        <div class="project__row project__row--wide">
+          <img src="assets/rowan-colours-strip.jpg" alt="A row of nine colour versions of the Rowan design on a blue background, from an all-white outfit with gold armour through magenta, pink and grey versions to dark black and maroon ones, each with a veil, purple flowers and vines around the bare ankles" />
+          <div class="project__notes">
+            <!-- REPLACE: a short heading for this image, e.g. exploring colour -->
+            <h2 class="project__notes-title">Testing colours and extra textures</h2>
+            <!-- REPLACE: write about this image in your own words. Which colours did you try, and why did you pick the final one? -->
+            <p>I started out with the main colours being white and gold, leaning into a divine cleric aspect while also keeping the wedding aspect. However, I found that the colours just merged together too much, leading to me trying out different colours for the clothes. I tried pinks and reds, but I kept facing the same issue of the colours just not working together. I also tested out adding some <strong> dirt, blood, and mold textures </strong> to allow for there to be <strong> a visible indication that the curse is causing active damage to the body beyond growing, along with the character being someone who's definitely in a rough situation.</strong> Since the colours were really frustrating me, I asked a friend of mine who's really good with colours (and who I could explain the backstory to because he's not in the campaign), and he gave me some pointers as to how to have the colours work together. I also decided that while I did want it to be giving some feelings of a wedding, that didn't mean it had to only be wedding because <strong> the curse is viewed as an early death sentence,</strong> and having Rowan have black on them can easily communicate that feeling. It would also make sense for it to be the dominant colour because <strong>that's the dominant viewpoint of the curse</strong>. It also kind of allows for the veil to work both as a wedding veil and as a small burial shroud. I also changed the colour of the flowers because the light pink was a bit too out of place. With a bit more testing done (which I did not get the last little bit of unfortunately), I settled on what I wanted the colours for Rowan to be. </p>
+          </div>
+        </div>
+
+        <!-- Image 5: the final design, with a section beside it to write in. -->
+        <div class="project__row">
+          <img src="assets/rowan-final.jpg" alt="The finished Rowan character design: a tall figure in a white, blood-stained veil that covers the eyes with dark horn-like branches over it, grey armour, dark red flowers, branches growing from the chest, and a long torn black and white robe fading to red with dirt and blood on the ends, standing barefoot with vines wrapped around the ankles, on a black background with a soft glow" />
+          <div class="project__side">
+            <div class="project__notes">
+              <!-- REPLACE: a short heading for this image, e.g. the final design -->
+              <h2 class="project__notes-title">Final design for Rowan</h2>
+              <!-- REPLACE: write about this image in your own words. How did the design end up, and what are you proud of? -->
+              <p>For the final design, I darkened the gradient on the sashes a bit more, changed the red layer on the dress to white to bring back a bit more of the wedding idea, and added some clearer thorns onto the brambles. I also added more cursed veins around the body and added some little scars where the brambles would be. I think the design does a good job at both portraying aspects of Rowan's story, while also allowing for some sense of versatility as to what the nature of the curse is because depending on what story you hear first you read it all differently, switching from a cursed cleric where the curse will mutate and kill them, to a cursed cleric where the curse will mutate them and manipulate them into being a willing partner to escape the curse (without them realising that's what's happening). </p>
+            </div>
+            <!-- The Rowan sketch, under the writing. It tilts left and right like the other sketches. It's decoration only. -->
+            <!-- HIDDEN for now. To bring it back, delete the comment markers around the image tag below (the opening marker is on this line and the closing one is after the image).
+            <img class="project__side-sketch" src="assets/rowan-sketch.png" alt="" aria-hidden="true" />
+            -->
+          </div>
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Charlie Pegg</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

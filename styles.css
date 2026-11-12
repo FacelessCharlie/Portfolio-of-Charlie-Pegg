@@ -1,0 +1,1311 @@
+/* =============================================================
+   STYLES.CSS  —  the look of your whole website
+   =============================================================
+
+   START HERE ↓
+   The block below is your "design tokens": the colours, fonts and
+   spacing used everywhere. Change a value here and it updates across
+   the ENTIRE site. This is the easiest and best place to make the
+   site feel like YOURS.
+
+   TIP: Ask Claude things like
+     "Change the accent colour to a warm orange."
+     "Use a serif font for headings."
+     "Make everything feel more spacious."
+   ============================================================= */
+
+:root {
+  /* ---- COLOURS ---- */
+  --color-bg:      #0a0a0a;   /* page background */
+  --color-surface: #f4f4f5;   /* cards, panels */
+  --color-text:    #ffffff;   /* main text (white, for the dark background) */
+  --color-muted:   #ffffff;   /* secondary text (white too) */
+  --color-border:  #e5e7eb;   /* thin lines */
+  --color-accent:  #3b5bdb;   /* links & buttons — CHANGE ME to make it yours */
+  --color-accent-text: #ffffff; /* text on top of the accent colour */
+
+  /* ---- FONTS ---- */
+  /* These are "system fonts" — they use whatever the computer has, so
+     there is nothing to download. Swap them for a Google Font if you
+     like (ask Claude how). */
+  --font-body:    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* Titles use Futura. It comes with Macs, iPhones and iPads; on other devices
+     the browser falls back to the next font in the list. */
+  --font-heading: Futura, "Futura PT", "Century Gothic", var(--font-body);
+
+  /* ---- SPACING & SIZES ---- */
+  --space:        1rem;       /* the base spacing unit */
+  --radius:       10px;       /* how round corners are */
+  --max-width:    1080px;     /* how wide content gets on big screens */
+  --header-height: 3.5rem;    /* height of the top bar with your name */
+}
+
+/* -------------------------------------------------------------
+   BASIC RESET — sensible defaults. You can usually leave this.
+   ------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* smooth scrolling to #about, #work, etc. */
+  scroll-padding-top: var(--header-height); /* stop the top bar covering section titles */
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------------------
+   PAGE BACKGROUND ARTWORK
+   One layer stretched over the WHOLE height of the page (not just the
+   window). The top of the picture is at the top of the page and the
+   bottom of the picture is at the very bottom of the page, and it
+   scrolls up with the content as you scroll down. "100% 100%" makes
+   it fill the page exactly, so it's stretched to fit.
+   ------------------------------------------------------------- */
+body {
+  overflow-x: clip;     /* the full-width door row must never make the page scroll sideways */
+  position: relative;   /* so the layer below is measured against the whole page */
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;             /* covers the full page: top to bottom, left to right */
+  z-index: -1;          /* behind all the content */
+  background: var(--color-bg) url("assets/background.jpg") no-repeat center / 100% 100%;
+}
+
+/* On the Rowan page the artwork keeps its true proportions instead of being
+   stretched. "cover" scales it, without distorting it, until it fills the whole
+   page. The page is much taller than it is wide, so the picture's top touches the
+   top of the page and its bottom touches the bottom, and the left and right
+   edges are clipped off (it stays centred). */
+.page-rowan::before {
+  background-image: url("assets/background-rowan.jpg"); /* this page's own copy of the artwork */
+  background-size: cover;
+  background-position: center;
+}
+
+/* -------------------------------------------------------------
+   INTRO SCREEN  (the big name artwork you see first)
+   It sits fixed over the whole window. script.js shrinks it and
+   fades it out as you scroll, which reveals the site underneath.
+   The artwork has a transparent background, so the page colour shows through.
+   ------------------------------------------------------------- */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 50;              /* above the nav and everything else */
+  display: grid;
+  place-items: center;       /* artwork sits in the middle of the space under the top bar */
+  padding-top: var(--header-height);
+  /* no background of its own, so the page background shows behind the name */
+  pointer-events: none;     /* clicks pass straight through it */
+}
+
+.intro__stage {
+  position: relative;
+  aspect-ratio: 1440 / 1024;  /* the shape of the artwork canvas */
+  /* Big: up to 92% of the window width (a small gap is left on each side),
+     but never taller than the space under the top bar, with room above and below. */
+  width: min(
+    92vw,
+    calc((100vh - 2 * var(--header-height)) * 1.40625)
+  );
+  transform-origin: top center; /* shrinks towards the top, not the middle */
+  will-change: transform, opacity;
+}
+
+/* Each layer is the full canvas, stacked exactly on top of each other. */
+.intro__stage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* The arrow nudges down and back up, on a loop. */
+.intro__arrow {
+  animation: arrow-bounce 1.2s ease-in-out infinite;
+}
+
+/* The sketches tilt 15 degrees left for 1 second, then 15 degrees right for
+   1 second, and repeat. steps(1) makes it jump straight between the two
+   angles, with no smooth in-between movement. Each layer is the whole canvas,
+   so transform-origin is set to the middle of that sketch. */
+.intro__sketch {
+  animation: sketch-tilt 2s steps(1, end) infinite;
+}
+
+.intro__sketch--tablet {
+  transform-origin: 16.7% 77.9%;
+}
+
+.intro__sketch--character {
+  transform-origin: 84.3% 78.1%;
+}
+
+@keyframes sketch-tilt {
+  0%   { transform: rotate(-15deg); } /* left */
+  50%  { transform: rotate(15deg); }  /* right */
+  100% { transform: rotate(-15deg); }
+}
+
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(1.5%); } /* a small bounce: 1.5% of the canvas height */
+}
+
+/* One screen of empty space so there's room to scroll the intro away. */
+.intro-spacer {
+  height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%; /* stops images overflowing on small screens */
+  height: auto;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+/* -------------------------------------------------------------
+   ACCESSIBILITY  (small things that make the site usable for
+   everyone — including people using a keyboard or a screen reader)
+   ------------------------------------------------------------- */
+
+/* A clear outline shows keyboard users where they are on the page.
+   :focus-visible only shows it for keyboard focus, not mouse clicks. */
+a:focus-visible,
+button:focus-visible,
+.card:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* The "Skip to content" link. It's tucked off-screen until a keyboard
+   user tabs to it, then it appears at the top-left. */
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -3rem; /* off-screen */
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  z-index: 100;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0.5rem; /* slides into view when focused */
+}
+
+/* The .container keeps content centred and stops it getting too wide. */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space);
+}
+
+/* -------------------------------------------------------------
+   HEADER / NAVIGATION
+   ------------------------------------------------------------- */
+.site-header {
+  position: fixed;    /* pinned to the very top of the window, always visible */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 60;        /* above the intro screen too */
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nav__logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.nav__links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav__links a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.nav__links a:hover {
+  color: var(--color-accent);
+}
+
+/* The hamburger button is hidden on big screens... */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.nav__toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+}
+
+/* -------------------------------------------------------------
+   HERO (the big intro at the top of the home page)
+   ------------------------------------------------------------- */
+.hero {
+  padding-block: 4rem 3rem;
+}
+
+.hero__eyebrow {
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4rem); /* grows with screen size */
+  line-height: 1.1;
+}
+
+.hero__subtitle {
+  color: var(--color-muted);
+  font-size: 1.2rem;
+  max-width: 40ch;
+  margin-block: 1rem 1.5rem;
+}
+
+/* -------------------------------------------------------------
+   BUTTONS
+   ------------------------------------------------------------- */
+.button {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+/* -------------------------------------------------------------
+   SECTIONS (About, Work, ...)
+   ------------------------------------------------------------- */
+.section {
+  padding-block: 3rem;
+}
+
+.section__title {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+/* A heading made from an image. Much bigger than the 1.8rem text it replaces. */
+.section__title--image img {
+  width: clamp(200px, 24vw, 300px);
+  height: auto;
+}
+
+/* "About me" is a wider image, so it gets a wider box to keep its letters
+   the same size as the letters in the "Work" title above. */
+.section__title--image .section__title-img--about {
+  width: clamp(300px, 37.6vw, 470px);
+}
+
+/* The little sketch next to the "About me" title. It's smaller than the title and tilts left and
+   right (same animation as the other sketches). It's decoration, so clicks pass through it. */
+.section__title--with-sketch {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section__title--image .about-sketch {
+  width: clamp(60px, 8vw, 110px);
+  height: auto;
+  flex: none;
+  pointer-events: none;
+  animation: sketch-tilt 2s steps(1, end) infinite;
+}
+
+.section__intro {
+  color: var(--color-muted);
+  max-width: 70ch;  /* how far the text stretches to the right */
+  margin-bottom: 2rem;
+}
+
+/* -------------------------------------------------------------
+   ABOUT
+   ------------------------------------------------------------- */
+.about {
+  display: grid;
+  grid-template-columns: 400px 1fr; /* photo | text */
+  gap: 3rem;
+  align-items: start;
+}
+
+.about__photo {
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+/* A solid black box behind the text, so it stays readable over the background artwork. */
+.about__text {
+  background: var(--color-bg);  /* #0a0a0a */
+  padding: 1.5rem;
+  border-radius: var(--radius);
+}
+
+.about__text p + p {
+  margin-top: 1rem;
+}
+
+/* -------------------------------------------------------------
+   WORK GRID + PROJECT CARDS
+   ------------------------------------------------------------- */
+/* The doors sit in one long row that slides slowly to the left, forever,
+   and that you can also drag or scroll sideways.
+   .door-loop is the window the row slides through. It's stretched to the full
+   width of the screen, and it clips the sides so doors slide out of view.
+   overflow-x: clip leaves the top and bottom alone, so a door can still grow on hover. */
+.door-loop {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);   /* breaks out of the page margins to touch both screen edges */
+  overflow-x: clip;
+  /* start the first door in line with the rest of the content */
+  padding-inline-start: calc(max(0px, (100vw - var(--max-width)) / 2) + var(--space));
+  padding-block: 2rem;             /* room for the hover growth */
+}
+
+.door-loop__track {
+  display: flex;
+  width: max-content;
+}
+
+/* script.js slides the row (by itself, and when you drag or scroll it).
+   touch-action: pan-y lets a finger scroll the page up and down while
+   sideways movement is left to the script. */
+.door-loop {
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.door-loop.is-dragging {
+  cursor: grabbing;
+}
+
+.door-loop__track {
+  will-change: transform;
+}
+
+.door-loop img {
+  -webkit-user-drag: none;
+}
+
+/* Every door is the same size, with room after it (margin, not gap, so both copies measure the same). */
+.door-loop__track > .card {
+  flex: 0 0 auto;
+  width: clamp(300px, 33vw, 480px);
+  margin-inline-end: 5rem;
+}
+
+/* Each card is a door. The shape of the card matches the closed door
+   (1029 x 1522 px in the original artwork), so the door images can be
+   placed on it with percentages. */
+.card {
+  position: relative;
+  display: block;
+  aspect-ratio: 1029 / 1522;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+/* Everything that grows on hover lives in here. */
+.card__door {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.2s ease;
+}
+
+.card:hover .card__door,
+.card:focus-visible .card__door {
+  transform: scale(1.06); /* grows slightly */
+}
+
+/* Empty placeholder doors aren't links, so they don't grow. */
+.card--blank:hover .card__door {
+  transform: none;
+}
+
+/* The project photo sits behind the doors, exactly filling the door frame. */
+.card__photo {
+  position: absolute;
+  left: 12.05%;
+  top: 9.99%;
+  width: 71.72%;
+  height: 86.14%;
+  object-fit: cover;
+}
+
+/* For a portrait poster that's a different shape from the doorway: show all of it
+   (no cropping) on a matching background colour, so it blends into the poster's paper. */
+.card__photo--contain {
+  object-fit: contain;
+  background: #f7f7f7;
+}
+
+/* For a wide picture in the tall doorway: it fills the doorway, and this chooses which slice of it
+   shows (a bit right of centre, where the main building is). */
+.card__photo--slice {
+  object-position: 62% center;
+}
+
+/* Both door drawings are the full original canvas, positioned so the
+   closed door lines up with the card. max-width is switched off because
+   they're deliberately wider than the card. */
+.card__door-img {
+  position: absolute;
+  left: -17.88%;
+  top: -12.48%;
+  width: 137.41%;
+  height: 131.4%;
+  max-width: none;
+  pointer-events: none;
+}
+
+/* The open door is hidden until you hover or focus the card, then it replaces the closed one. */
+.card__door-img--open {
+  opacity: 0;
+}
+
+.card:hover .card__door-img--open,
+.card:focus-visible .card__door-img--open {
+  opacity: 1;
+}
+
+.card:hover .card__door-img--closed,
+.card:focus-visible .card__door-img--closed {
+  opacity: 0;
+}
+
+/* The sketch in the top-right of the Work section. #work is only as wide as
+   the content, so the "right" value below pushes it out into the page margin
+   and then back in by 4% of the window width. It's decoration, so clicks
+   pass through it, and it's hidden on phones where it would sit on the text. */
+#work,
+#about {
+  position: relative;
+}
+
+.work-sketch {
+  position: absolute;
+  top: 0;
+  right: calc(4vw - (100vw - 100%) / 2);
+  width: clamp(120px, 17vw, 340px);
+  pointer-events: none;
+  animation: sketch-tilt 2s steps(1, end) infinite; /* same left/right tilt as the intro sketches */
+}
+
+@media (max-width: 700px) {
+  .work-sketch {
+    display: none;
+  }
+}
+
+/* Hides text visually but keeps it for screen readers (the door drawing
+   already shows the title, so we don't show it twice). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------
+   PROJECT PAGE
+   ------------------------------------------------------------- */
+/* The zine box (Ouroboros page): the embedded PDF with a download button underneath. */
+.project__pdf-box {
+  margin-top: 2rem;
+}
+
+/* ---- The page-turning zine viewer ----
+   The book is as wide as the box and as tall as one double-page spread. Every page
+   turn is a "leaf" (a sheet of paper with a front and a back) that swings around the
+   spine, which is the middle of the book. Leaves not yet turned lie on the right,
+   turned ones lie on the left. With none turned you see just the cover on the right;
+   with all turned you see just the back cover on the left. */
+.flipbook {
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.flipbook:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 6px;
+}
+
+.flipbook__book {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 839.055 / 595.276; /* the shape of one double-page spread */
+  perspective: 3000px;             /* makes the swinging page look 3D */
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* The text box on the left-hand side of the closed book (where the cover isn't).
+   It's only shown while the cover is closed, and fades out when the zine opens. */
+.flipbook__hint {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  width: 44%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 1.5rem;
+  border: 2px solid var(--color-text);
+  border-radius: var(--radius);
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.6vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.flipbook--at-cover .flipbook__hint {
+  opacity: 1;
+}
+
+.flipbook__leaf {
+  position: absolute;
+  top: 0;
+  left: 50%;                       /* starts on the right-hand side of the spine */
+  width: 50%;
+  height: 100%;
+  transform-origin: left center;   /* swings around the spine */
+  transform-style: preserve-3d;
+  transition: transform 0.9s ease-in-out;
+}
+
+.flipbook__leaf--turned {
+  transform: rotateY(-180deg);     /* swung over to the left-hand side */
+}
+
+.flipbook__face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  backface-visibility: hidden;     /* each side of the paper is only seen from its own side */
+  -webkit-backface-visibility: hidden;
+  background: #f7f7f7;             /* the paper colour of the zine */
+}
+
+.flipbook__face--back {
+  transform: rotateY(180deg);
+}
+
+/* A soft shadow down the spine, so the pages look like they curve into it. */
+.flipbook__face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.22), transparent 10%);
+}
+
+.flipbook__face--back::after {
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.22), transparent 10%);
+}
+
+.flipbook__face img {
+  display: block;
+  height: 100%;
+  max-width: none;
+  pointer-events: none;
+}
+
+/* The spreads are one image holding two pages, so a face shows one half of it. */
+.flipbook__face--half img {
+  width: 200%;
+}
+
+.flipbook__face--right img {
+  margin-left: -100%;              /* slides the image left to show its right-hand half */
+}
+
+.flipbook__face--full img {
+  width: 100%;
+}
+
+/* "Enlarge to fit screen": the wrapper fills the whole window on a dark backdrop, and the
+   book is sized so a whole double-page spread fits both the width and the height of the screen. */
+.flipbook-wrap--enlarged {
+  position: fixed;
+  inset: 0;
+  z-index: 200;                 /* above the top bar and everything else */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(10, 10, 10, 0.98);
+}
+
+.flipbook-wrap--enlarged .flipbook {
+  max-width: none;
+  width: min(100%, calc((100vh - 6.5rem) * 1.4096)); /* 1.4096 = the width/height of a spread */
+}
+
+.flipbook-wrap--enlarged .flipbook__controls {
+  flex-wrap: wrap;
+  margin-top: 0;
+}
+
+.flipbook__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* The second row of controls: "Back to start" and the page index. */
+.flipbook__jump {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1rem;
+  margin-top: 0.75rem;
+}
+
+.flipbook__jump[hidden] {
+  display: none;
+}
+
+.flipbook__label {
+  font-weight: 700;
+}
+
+.flipbook__select {
+  max-width: min(100%, 26rem);
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--color-text);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.flipbook__status {
+  min-width: 9rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.flipbook__button {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--color-text);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.flipbook__button:hover:not(:disabled) {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.flipbook__button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.project__download {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--color-text);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.project__download:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* A solid box behind the text, so it stays readable over the background artwork. */
+.project__panel,
+.project__notes {
+  background: var(--color-bg);  /* #0a0a0a */
+  display: flow-root;           /* makes the box grow to hold a floated sketch */
+  padding: 1.5rem;
+  border-radius: var(--radius);
+}
+
+/* The final design in the top-right of the box. "float: right" tucks it into the corner
+   and lets the text flow around it instead of going underneath. It stays inside the box
+   (the box grows to hold it) and, unlike the sketches, it doesn't move. */
+.project__panel-image {
+  float: right;
+  width: clamp(140px, 22vw, 300px);
+  height: auto;
+  margin: 0 0 1rem 1.5rem;
+  border-radius: var(--radius);
+}
+
+.project__back {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+}
+
+.project__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+}
+
+/* A much bigger title, used on the Rowan page only. */
+.project__title--large {
+  font-size: clamp(3.5rem, 11vw, 8rem);
+}
+
+/* The title is a picture of the word. Its width follows the same sizes as the text it
+   replaced (3.5rem to 8rem), so it takes up about the same room. */
+.project__title-img {
+  width: clamp(13.4rem, 42.5vw, 30.6rem);
+  height: auto;
+}
+
+/* The Ouroboros title is a much wider word, so it gets its own width. It stops short of the full
+   width so the poster floating on the right of the box still fits beside it. */
+.project__title-img--ouroboros {
+  width: clamp(14rem, 60vw, 38rem);
+}
+
+/* The Jansen Mansion title is a long, three-line title, so it gets its own width. It stops short
+   of the full width so the portrait floating on the right of the box still fits beside it. */
+.project__title-img--jansen {
+  width: clamp(14rem, 55vw, 36rem);
+}
+
+/* The "Forever ends in the Fall" title is a two-line title, so it gets its own width. */
+.project__title-img--forever {
+  width: clamp(16rem, 70vw, 40rem);
+}
+
+/* Titles for the Collaborate with Nature and Beware the Vampire pages. The Collaborate title
+   stops short of the full width so the poster floating on the right still fits beside it. */
+.project__title-img--collab {
+  width: clamp(14rem, 55vw, 36rem);
+}
+
+/* The Vampire title stops short of the full width so the poster floating on the right still fits beside it. */
+.project__title-img--vampire {
+  width: clamp(14rem, 55vw, 36rem);
+}
+
+.project__meta {
+  color: var(--color-muted);
+  margin-block: 0.5rem 2rem;
+}
+
+.project__description {
+  max-width: 65ch;
+  font-size: 1.1rem;
+}
+
+.project__description p + p {
+  margin-top: 1rem;
+}
+
+.project__gallery {
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.project__gallery img {
+  width: 100%;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+/* Smaller gallery images, used on the Rowan page only (about half the width). */
+.project__gallery--small img {
+  width: 50%;
+  max-width: 520px;
+  min-width: 240px;
+}
+
+/* An image with a writing area beside it (Rowan page). */
+.project__row {
+  display: grid;
+  grid-template-columns: minmax(0, 560px) minmax(0, 1fr); /* image | writing */
+  gap: 2rem;
+  align-items: start;
+}
+
+/* A writing box that stretches across both columns, under the image and its box,
+   so its edges line up with the page margins. */
+.project__notes--wide {
+  grid-column: 1 / -1;
+}
+
+/* Every second row swaps sides: the image goes on the right and the writing
+   on the left. (Only <div> rows are counted, so a plain image doesn't upset it.) */
+.project__row:nth-of-type(even) {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 560px); /* writing | image */
+}
+
+.project__row:nth-of-type(even) img {
+  grid-column: 2;            /* image in the right-hand column... */
+  grid-row: 1;
+}
+
+.project__row:nth-of-type(even) > .project__notes:not(.project__notes--wide) {
+  grid-column: 1;            /* ...and the writing in the left-hand one */
+  grid-row: 1;
+}
+
+.project__row:nth-of-type(even) > .project__notes--wide {
+  grid-row: 2;               /* a full-width box goes underneath both */
+}
+
+/* The writing box with the Rowan sketch underneath it (last row). */
+.project__side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* (The longer selector is needed so it beats the rule that makes every image in a row fill its column.) */
+.project__gallery--small .project__row .project__side-sketch {
+  align-self: flex-end;          /* starts at the right-hand side, under the box... */
+  margin-right: 25%;             /* ...then this pulls it left (a quarter of the column's width) */
+  width: clamp(120px, 16vw, 240px);
+  min-width: 0;
+  max-width: none;
+  height: auto;
+  background: none;               /* the gallery gives every image a light grey backing; the sketch must not have one */
+  border-radius: 0;
+  animation: sketch-tilt 2s steps(1, end) infinite; /* same left/right tilt as the other sketches */
+}
+
+/* A very wide image (the strip of colour versions): it gets the full width, with the writing underneath. */
+.project__row--wide,
+.project__row--wide:nth-of-type(even) {
+  grid-template-columns: 1fr;
+}
+
+.project__row--wide:nth-of-type(even) img,
+.project__row--wide:nth-of-type(even) > .project__notes:not(.project__notes--wide) {
+  grid-column: auto; /* image on top, writing underneath, as normal */
+  grid-row: auto;
+}
+
+/* These win over the smaller-gallery rule above: inside the row the image fills its column. */
+.project__gallery--small .project__row img {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+/* Three side-by-side columns inside one wide box (each has its own sub-heading and paragraph). */
+.project__columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 800px) {
+  .project__columns {
+    grid-template-columns: 1fr; /* stack the columns on narrow screens so the text stays readable */
+  }
+}
+
+/* A bigger version of the box title, used for "Actioning feedback and adding final details". */
+.project__notes-title--large {
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+  margin-bottom: 1.25rem;
+}
+
+.project__notes-subtitle {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.project__notes-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 700px) {
+  .project__row,
+  .project__row:nth-of-type(even) {
+    grid-template-columns: 1fr; /* stack the writing under the image on phones */
+  }
+
+  .project__row:nth-of-type(even) img,
+  .project__row:nth-of-type(even) > .project__notes:not(.project__notes--wide),
+  .project__row:nth-of-type(even) > .project__notes--wide {
+    grid-column: auto; /* back to simple top-to-bottom order on phones */
+    grid-row: auto;
+  }
+}
+
+/* Clickable gallery images (Rowan page): the pointer shows they can be enlarged. */
+.zoomable {
+  cursor: zoom-in;
+}
+
+.zoomable:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* The enlarged-image popup. <dialog> is the browser's built-in popup; the dimmed
+   page behind it is its ::backdrop. */
+.lightbox {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.lightbox[open] {
+  display: grid;
+  place-items: center;
+}
+
+.lightbox::backdrop {
+  background: rgba(10, 10, 10, 0.92);
+}
+
+.lightbox__image {
+  max-width: 92vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius);
+  cursor: default;
+}
+
+.lightbox__close,
+.lightbox__nav {
+  position: absolute;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__close:hover,
+.lightbox__nav:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.lightbox__close {
+  top: 1rem;
+  right: 1rem;
+}
+
+.lightbox__nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__nav--prev { left: 1rem; }
+.lightbox__nav--next { right: 1rem; }
+
+body.lightbox-open {
+  overflow: hidden; /* the page behind doesn't scroll while a picture is open */
+}
+
+/* -------------------------------------------------------------
+   FOOTER
+   ------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: 2rem;
+  margin-top: 3rem;
+  background: var(--color-bg); /* same solid #0a0a0a as the header */
+  color: var(--color-muted);
+}
+
+/* =============================================================
+   RESPONSIVE / MOBILE STYLES
+   =============================================================
+   Everything above is the "desktop" look. The block below only
+   applies on screens NARROWER than 700px (phones and small
+   tablets). This is how the site adapts — it's the "Responsive"
+   part of the brief.
+
+   Try it: make your browser window very narrow and watch the
+   menu turn into a hamburger button.
+   ============================================================= */
+@media (max-width: 700px) {
+
+  /* Show the hamburger button... */
+  .nav__toggle {
+    display: flex;
+  }
+
+  /* ...and hide the links until the button is tapped.
+     script.js adds the class "nav__links--open" to show them. */
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav__links--open {
+    display: flex;
+  }
+
+  .nav__links a {
+    padding: 1rem var(--space);
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* Stack the about photo above the text instead of beside it. */
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .about__photo {
+    width: 240px;
+  }
+}
+
+/* =============================================================
+   REDUCED MOTION  (accessibility)
+   =============================================================
+   Some people feel dizzy or unwell from moving/animated interfaces,
+   so they turn on "Reduce Motion" in their computer settings. When
+   they have, we switch off the smooth scrolling and the little
+   hover animations. Good practice on every site.
+   ============================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ===== Workbook viewer (project-6.html): click through the workbook pages ===== */
+.workbook {
+  margin-top: 1.5rem;
+}
+
+.workbook__hint {
+  margin-bottom: 1rem;
+}
+
+.workbook__viewer {
+  background: #000;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.workbook__page {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Tall (portrait) pages, like the Collaborate with Nature workbook: keep them to a readable
+   width and centred, so a page isn't taller than the screen. */
+.workbook__viewer--portrait {
+  max-width: 34rem;
+  margin-inline: auto;
+}
+
+/* A picture that opens large when clicked (the poster on the Collaborate with Nature page). */
+.project__panel-image[data-enlarge] {
+  cursor: zoom-in;
+}
+
+.project__panel-image[data-enlarge]:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Lets the Previous / Next buttons in the enlarged popup be disabled at the ends. */
+.lightbox__nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ===== Grid of small text boxes (Ouroboros page) ===== */
+.notegrid__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+  gap: 1.25rem 1rem;
+  margin-top: 1rem;
+}
+.notegrid__title {
+  margin: 0 0 .4rem;
+  font-size: 1rem;
+}
+.notegrid__box {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: .75rem .9rem;
+  min-height: 6rem;
+}
+.notegrid__box p { margin: 0; font-size: .9rem; }
+/* ===== Playable game demo (Jansen Mansion page) ===== */
+.game__note { color: var(--color-muted); font-size: .9rem; }
+.game__frame {
+  position: relative;
+  aspect-ratio: 1440 / 1024;
+  margin: 1rem 0;
+  background: #000;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+/* The game is drawn at a fixed 1440x1024 (about the shape the game is built for) and then shrunk to fit the box.
+   script.js sets the scale. Without JavaScript it just fills the box. */
+.game__iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; transform-origin: 0 0; }
+.game__frame.is-scaled .game__iframe { width: 1440px; height: 1024px; }
+/* The black warning screen sits on top of the game until the button is pressed. */
+.game__warning {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+.game__warning h3, .game__warning p { margin: 0; max-width: 34rem; }
+.game__warning[hidden] { display: none; }
+
+/* ===== Writing box under the game demo (Jansen Mansion page) ===== */
+/* A gap so this black box doesn't merge into the demo box above it (they're the same colour). */
+.demo-notes {
+  margin-top: 1.5rem;
+}
+
+.demo-notes__box {
+  margin-top: 1rem;
+}
+.demo-notes__box p + p { margin-top: 1rem; }
+/* The writing box with a picture on its right (Jansen Mansion page). Stacks on narrow screens. */
+.demo-notes--with-image {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+.demo-notes--with-image .demo-notes__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  cursor: zoom-in;
+}
+@media (max-width: 700px) {
+  .demo-notes--with-image { grid-template-columns: 1fr; }
+}
+/* Same box, but with the picture on the LEFT and the writing on the right. */
+.demo-notes--image-left .demo-notes__image { grid-column: 1; grid-row: 1; }
+.demo-notes--image-left .demo-notes__text  { grid-column: 2; grid-row: 1; }
+@media (max-width: 700px) {
+  .demo-notes--image-left .demo-notes__image,
+  .demo-notes--image-left .demo-notes__text { grid-column: auto; grid-row: auto; }
+}
+/* A gap between the title box and the demo box (they're the same colour, so they ran together). */
+.game {
+  margin-top: 1.5rem;
+}
+/* A picture with a line of text under it, in the picture's column. */
+.demo-notes__side p { margin-top: 1rem; }

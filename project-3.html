@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!--
+  =============================================================
+  PROJECT PAGE 3  (project-3.html)
+  =============================================================
+  The page for the third project door on the home page. It's built the same
+  way as the other project pages: a title, images and a description.
+  Anywhere you see REPLACE, that is content for YOU to write.
+  =============================================================
+-->
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Curious Case of the Jansen Mansion Murders — Charlie Pegg</title>
+  <!-- REPLACE: a one-line description search engines show -->
+  <meta name="description" content="The Curious Case of the Jansen Mansion Murders, a C.Y.O.A game designed by Charlie Pegg" />
+  <!-- The little icon in the browser tab (your sketch). -->
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Skip link: lets keyboard users jump straight to the main content. -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Same nav as the other pages. The logo links home. -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="nav__logo">Charlie Pegg</a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="section container project">
+
+      <!-- A solid #0a0a0a box behind the text, so it stays readable over the background artwork. -->
+      <div class="project__panel">
+        <!-- The portrait, floated to the right inside the box so the title and text sit beside it. -->
+        <img class="project__panel-image" src="assets/jansen-portrait.jpg" alt="Black and white photograph of a person with shoulder-length hair looking off to the side. They wear a dark coat over a white shirt, a loosened dark tie and a tartan waistcoat, and hold a pair of glasses in both hands. A large shadow of them falls on the textured wall behind, and the photo sits in a crumpled-paper border." />
+
+        <!-- A link back to the list of projects -->
+        <a class="project__back" href="index.html#work">← Back to work</a>
+
+        <h1 class="project__title"><img class="project__title-img project__title-img--jansen" src="assets/jansen-title.png" alt="The Curious Case of the Jansen Mansion Murders" /></h1>
+
+        <!-- REPLACE: short facts about the project -->
+        <p class="project__meta">C.Y.O.A Game · 2026</p>
+
+        <!-- ===== PROJECT DESCRIPTION ===== -->
+        <div class="project__description">
+          <!-- REPLACE: describe your project. What is it? Why did you make
+               it? How did you make it? What are you proud of? -->
+          <p>
+            Murder! Murder! What are we to do? Well here's a C.Y.O.A where you decide exactly how the case played out - <strong>The Curious Case of the Jansen Mansion Murders.</strong> For this project, we had to make an interface/proof of concept where a user could make different choices and get different outcomes, and I chose to do a murder mystery with a bit of a twist to it. Instead of it being you participating in the case, <strong>you're one of the many members of the public who theorises about how a murder case that took place years ago might have played out.</strong> You play from the perspective of the only survivor of the mass murder, Liv, and depending on the choices you make, the killer/killers change. However, since this one is a proof of concept/beta test, you will be limited in your options for the time being. I chose to do a murder mystery because I have loved murder mysteries for ages now and wanted to give one a shot myself, and while I couldn't complete it in full, I'm proud that I did this much in the allocated time considering how many moving parts are in murder mysteries.
+          </p>
+
+          <p>
+            <strong>Skills utilised for this project: Photography - Illustration - MediBang - Affinity - Figma/Figma Make - Layout</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- ===== PLAYABLE DEMO ===== -->
+      <!-- The game is made in Figma Make and published at the link below. It sits in an iframe (a
+           window onto another web page). The iframe has no src at first: script.js only fills it in
+           after the visitor clicks "I understand, let me play", so nothing flashes or shakes before then. -->
+      <section class="project__notes game" aria-labelledby="game-heading">
+        <h2 id="game-heading">Play the demo</h2>
+        <p>Make your own theory for what happened with your own choices.</p>
+        <p class="game__note">This game is designed for desktop. It might be harder to play on phone.</p>
+
+        <div class="game__frame" id="game">
+          <iframe class="game__iframe" id="game-iframe" title="The Curious Case of the Jansen Mansion Murders, playable demo" data-src="https://patent-beluga-71309552.figma.site" allow="fullscreen" loading="lazy"></iframe>
+
+          <!-- Black screen covering the game until the visitor agrees to the warnings. -->
+          <div class="game__warning" id="game-warning">
+            <h3>Before you play</h3>
+            <p>This game has <strong>screen shake</strong>, which could cause problems for people who need reduced motion. It also has a <strong>mild flash</strong>, which could cause issues for anyone with photosensitivity. If these are concerns of yours, then <strong>please proceed with caution.</strong> If it ever becomes too much, <strong>refresh the page</strong> and this cover will come back.</p>
+            <button type="button" class="flipbook__button" id="game-accept">I understand, let me play</button>
+            <noscript><p><a class="project__download" href="https://patent-beluga-71309552.figma.site" target="_blank" rel="noopener">Play the demo in a new tab</a></p></noscript>
+          </div>
+        </div>
+
+        <a class="project__download" href="https://patent-beluga-71309552.figma.site" target="_blank" rel="noopener">Play in a new tab (opens in a new tab)</a>
+      </section>
+
+      <!-- ===== WRITING BOX UNDER THE DEMO ===== -->
+      <!-- A black box (the same one the other sections use) with a title, then a box to write in underneath.
+           Change the REPLACE text. To add more paragraphs, copy the <p> line inside the writing box. -->
+      <section class="project__notes demo-notes" aria-labelledby="demo-notes-2-heading">
+        <h2 id="demo-notes-2-heading">Coming up with the concept</h2>
+        <div class="demo-notes__box">
+          <p>When it came to figuring out what the case specifically was (AKA what the player knew about it), I decided to take some inspiration from Agatha Christie's 'And Then There Were None' which was set on an island far away from the mainland with rough storms meaning help couldn't arrive to help out the victims. I felt this would work best since if the murder case had happened on mainland, it would be strange as to why no authorities were called upon the first death. I also did play with the idea of having it be that everyone died and you would get to pick who to play from the perspective of, but <strong>I chose in favor of playing through the eyes of the only survivor so there was consistency within the playthroughs.</strong></p>
+        </div>
+      </section>
+	  
+      <section class="project__notes demo-notes" aria-labelledby="demo-notes-heading">
+        <h2 id="demo-notes-heading">Coming up with characters</h2>
+        <div class="demo-notes__box">
+          <p>For this project, I wanted the <strong>narrative</strong> to be an important aspect to the game because it's meant to be a game where you are theorising as to how an actual in-game cold case might have played out, and I took mild inspiration from 'The Deadliest Game' where the player character will re-enact their current theory as to how the murder took place. <strong>Because of that, I spent quite a bit of time figuring out the different characters and what their potential motives could be for each of their routes.</strong> For a lot of the characters, I tended to stick towards more classic forms of motives e.g. past grudges, secrets that couldn't come to light, moral beliefs, and for one, just for the thrill of killing. I also <strong>debated endings with multiple killers, endings with the player character being the killer, and ridiculous endings where it was all just supernatural rivalries,</strong> but while I did find them fun, they were too broad a scope for the project.</p>
+        
+		  <p>Since I now had a few motives to work with, I started trying to figure out who they were in the eye of the public. This had to be done because it's meant to be a game where you theorise what could have happened between the victims, and if it's a bunch of people who weren't in the public eye that's going to be a lot tougher. Therefore, <strong>I decided to give the characters some more public roles like a Mayor, a Singer, a renowned Scientist, etc.</strong> I also decided to have the main character be a woman murder mystery writer for a few reasons - 1. I wanted to have a more balanced cast, 2. One of my main inspirations was Agatha Christie, and I also wanted to reference 'The Deadliest Game' whose main character is a novelist 3. When in planning, I wanted to have the player character's killer ending be called 'Final Girl' and it's a bit harder to do that when the character isn't a woman, and 4. I really wanted the only survivor to be called 'Liv' because I really like puns and one of my favourite murder mystery shows names characters very blunty in a similar way. I did debate having it be that you could pick the gender, but I couldn't quite think of a way to incorporate it (and I really wanted to keep the pun intact).</p>
+		
+		</div>
+      </section>
+
+      <!-- ===== WRITING BOX WITH THE CHARACTER PHOTOS ===== -->
+      <!-- Same black box, with the writing on the left and the photo sheet on the right (they stack on phones).
+           "data-enlarge" lets visitors click the photos to see them large. Change the REPLACE text. -->
+      <section class="project__notes demo-notes demo-notes--with-image" aria-labelledby="demo-notes-3-heading">
+        <div class="demo-notes__text">
+          <h2 id="demo-notes-3-heading">Building the aesthetic of the game - Photography</h2>
+          <div class="demo-notes__box">
+            <p>I did struggle with this section for a while as I wanted to have a more gritty style but knew considering the time frame I wouldn't be able to do anything too high in effort. While thinking it over more, I remembered a video I watched called 'The Enduring Mystery of Jack the Ripper', which had an aesthetic that I thought would work well for what I was trying to achieve. As I examined the video for ideas, <strong>I realised that I could actually use my photography skills and get my friends to dress up as the different characters and be the faces for them,</strong> therefore I gathered some friends and we did a couple of photoshoots. After some greyscaling and texturing <strong>(which I got from pngtree, links to all textures used will be at the bottom of the page)</strong>, I had a lineup of some of the more important characters that I had some clearer ideas for what to work with.</p>
+          </div>
+        </div>
+        <img class="demo-notes__image" data-enlarge src="assets/jansen-characters.jpg" alt="Sheet of eight black and white photos. The top 4 are portrait photos of people in dark, period-style costumes, posed against a textured wall with their shadows cast behind them. Along the top row, someone looks over their shoulder with arms crossed, someone holds a pair of glasses, someone holds a cigarette, and someone touches their glasses while looking up. The bottom row shows the same four people posed on a stool or standing in a full body shot." width="1600" height="1131" />
+      </section>
+
+      <!-- ===== WRITING BOX WITH THE MANSION DRAWING ===== -->
+      <!-- The same as the box above, but the picture sits on the LEFT and the writing on the right
+           (the "demo-notes--image-left" class flips it; they still stack on phones). Change the REPLACE text. -->
+      <section class="project__notes demo-notes demo-notes--with-image demo-notes--image-left" aria-labelledby="demo-notes-4-heading">
+        <div class="demo-notes__text">
+          <h2 id="demo-notes-4-heading">Building the aesthetics of the game - Landing screen</h2>
+          <div class="demo-notes__box">
+            <p>For the landing screen, I wanted to lean into some of the sketches that were in my visual precedent. Since this was taking place in a large mansion, I decided to hunt down my old Roblox mansion and redraw it using a charcoal sheet that I had on me, <strong>resulting in a gritty and sketchy look that I really liked.</strong> I scanned the drawing and put it into MediBang to do some extra greyscaling of the drawing and to adjust the darkness of the lines. Once I did that, I brought it into Affinity to add some textures (linked below) and organise how it would sit, creating this background for the landing screen that really worked with the aesthetic I was going for.</p>
+          </div>
+        </div>
+        <img class="demo-notes__image" data-enlarge src="assets/jansen-mansion.jpg" alt="Night-time drawing of the Jansen Mansion: a large grey, many-windowed building with glowing white windows, seen from below at the top of a stepped garden, with distant mountains beside it and a starry black sky above. Red stains spread across the ground and walls." width="1440" height="1024" />
+      </section>
+
+      <!-- ===== WRITING BOX WITH THE STARRY BACKGROUND ===== -->
+      <!-- Writing on the left, the picture on the right (stacks on phones). Change the REPLACE text. -->
+      <section class="project__notes demo-notes demo-notes--with-image" aria-labelledby="demo-notes-6-heading">
+        <div class="demo-notes__text">
+          <h2 id="demo-notes-6-heading">Building aesthetics - background</h2>
+          <div class="demo-notes__box">
+            <p>Although I did originally consider having the background be a <strong>floorplan of the mansion</strong> that changes to the room the player is in, I realised that having that in the background with the photos on top and the text on top of that could <strong>result in too much clutter and would be confusing for a viewer.</strong> Therefore I decided to stick to something that was much simpler but still worked within the aesthetic, creating this background which has a bit of blood texture (linked below) and the other aforementioned textures. Whenever I tested it out in Figma, I found it to work nicely. Especially whenever it was tested in Figma Make as it flowed well from the landing screen.</p>
+          </div>
+        </div>
+        <img class="demo-notes__image" data-enlarge src="assets/jansen-background.jpg" alt="A black background speckled with white film grain, with splatters of dark red blood in the corners." width="1440" height="1024" />
+      </section>
+
+      <!-- ===== WRITING BOX WITH THE TITLE SCREEN ===== -->
+      <!-- Picture on the LEFT, writing on the right (the "demo-notes--image-left" class flips it; stacks on phones). Change the REPLACE text. -->
+      <section class="project__notes demo-notes demo-notes--with-image demo-notes--image-left" aria-labelledby="demo-notes-5-heading">
+        <div class="demo-notes__text">
+          <h2 id="demo-notes-5-heading">Putting it together in Figma</h2>
+          <div class="demo-notes__box">
+            <p>Now that I had basically all my assets for the game in order, <strong>I started working more seriously in Figma to figure out how all the paths would branch off of each other.</strong> I also made sure to use the <strong>desktop framing</strong> so it would work for a general desktop sizing. I tested out some different fonts and different ways to do buttons, and settled on the buttons being <strong>lighter so they stood out against the black background.</strong> I also tested out what kind of fonts to use, and chose <strong>BM HANNA as it stood out against the background more</strong> which was something fonts like Bodoni were struggling to do. Furthermore, <strong>I ended up changing the red to a lighter red as in a contrast checker the one I was originally working with didn't pass on the smaller letters check.</strong> I also tested out different ways to format the pages so all necessary dialogue and choices fit on the screen.</p>
+          
+		  	<p>If you'd like to read more about some of the thought processes I had in Figma, here's <a href="https://www.figma.com/design/jevQK9HnCzutlr98orsKYX/The-Curious-Case-of-the-Jansen-Mansion-Murders?node-id=0-1&amp;t=WyR6dTd86CTX6Zkk-1" target="_blank" rel="noopener">the Figma Design link (opens in a new tab)</a> for your perusal.</p>
+		  </div>
+        </div>
+        <img class="demo-notes__image" data-enlarge src="assets/jansen-case-screen-2.webp" alt="Screen from the game titled The case at hand, in red lettering on a dark background with blood splatters. White text explains the case: a party at the Jansen mansion on an island in 1913 left five attendees dead and one survivor, Liv. However, the public has been left without answers as to what happened, leaving them to theorise possible endings. Below, under the heading The attendees, are six framed portraits with captions: Armand the Mayor, Josias the bar owner, Rue the singer, Liv the murder mystery novelist and only survivor, and two silhouettes for Oakley the scientist and Mx. Jansen the host. A Begin Theory button sits at the bottom." width="1434" height="1013" />
+      </section>
+
+      <!-- ===== WRITING BOX WITH THE TITLE SCREEN (picture on the right) ===== -->
+      <!-- Writing on the left, the picture on the right (stacks on phones). Change the REPLACE text. -->
+      <section class="project__notes demo-notes demo-notes--with-image" aria-labelledby="demo-notes-7-heading">
+        <div class="demo-notes__text">
+          <h2 id="demo-notes-7-heading">Finishing up in Figma Make</h2>
+          <div class="demo-notes__box">
+            <p>A lot of the work I did in Figma Make was <strong>testing out ways to show visual interest with the assets that I had and replaying through it to see if there's anything in particular that was bugging me.</strong> I decided that my way of showing visual interest was going to be through having mild shake on the landing screen and the photos as that was something my visual precedent did with some of their visuals. I quite liked them when I tested them out, so I decided to keep using them. I also made sure that <strong>the buttons had a nice response when you hovered over them and clicked on them</strong> so it would feel nice for the viewer. When testing it, I tried out having the explanation of the case typing itself out, and <strong>while I really liked it and chose to keep it for the intro, I didn't do the same with any other screens since it would probably take a while to type everything out and waiting might bore the player.</strong> I also added the ability to <strong>skip the intro dialogue by clicking it because I was getting frustrated having to wait for it to finish typing itself out when I was testing it and knew that meant anyone playing would get frustrated too.</strong> When testing out transitions, I found fade ins and fade outs to work best so as to not surprise the player too much. <strong>I was considering making the transition to the ending screen be something similar to lightning flashes,</strong> but I felt <strong>that would be too much especially for anyone photosensitive,</strong> so I instead made it a fade to red so it was still different from the usual fade to blacks.</p>
+          </div>
+        </div>
+        <!-- The picture and a short line with the Figma Make link under it, kept together in the right-hand column. -->
+        <div class="demo-notes__side">
+          <img class="demo-notes__image" data-enlarge src="assets/jansen-title-screen.jpg" alt="Title screen for The Curious Case of the Jansen Mansion Murders: the title in dripping red letters at the top left of a night-time drawing of a large grey mansion with glowing windows, distant mountains and red stains on the ground, with the words A game by Charlie Pegg beneath the title." width="1440" height="1024" />
+          <p>If you want to look more at how I worked with Figma Make, here's <a href="https://www.figma.com/make/HHrexdRKx2qKZQ21n4HNBk/The-Curious-Case-of-the-Jansen-Mansion-Murders?t=YNgz3tNAtGVOpLvq-1" target="_blank" rel="noopener">the link to the Figma Make file (opens in a new tab)</a>.</p>
+        </div>
+      </section>
+
+      <!-- ===== ANOTHER WRITING BOX ===== -->
+      <!-- A plain box with just a title and writing (no picture). Change the REPLACE text. -->
+      <section class="project__notes demo-notes" aria-labelledby="demo-notes-8-heading">
+        <h2 id="demo-notes-8-heading">Final thoughts and attirubitions</h2>
+        <div class="demo-notes__box">
+          <p>Overall, I had quite a bit of fun working on this project. I think I did well putting together a proof of concept and managing to create an aesthetic suited for a murder mystery cold case. I would really love to revisit this project eventually, but I'm happy with what I achieved. <strong>It was fun learning how to work in Figma and what kind of things are done in order to make something satisfying to go through.</strong></p>
+        
+		  <p>For the blood splatter texture, <a href="https://pngtree.com/freepng/splash-red-paint-blood-stain_8483619.html" target="_blank" rel="noopener">click here (opens in a new tab)</a></p>
+		  <p>For the paper texture, <a href="https://pngtree.com/freepng/vintage-weathered-grey-paper-texture-with-wrinkles_15548696.html" target="_blank" rel="noopener">click here (opens in a new tab)</a></p>
+		  <p>For the film grain texture, <a href="https://pngtree.com/freepng/film-grain-texture_7425976.html" target="_blank" rel="noopener">click here (opens in a new tab)</a></p>
+		</div>
+      </section>
+
+      <!-- ===== PROJECT IMAGES ===== -->
+      <!-- Images of the work will go here later. Ask Claude to "add an image row" and it will
+           add an image with a writing box beside it, matching the Rowan page. -->
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Charlie Pegg</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

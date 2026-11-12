@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!--
+  =============================================================
+  HOME PAGE  (index.html)
+  =============================================================
+  This is the front page of your portfolio.
+
+  It has three sections, which cover the minimum requirements
+  from the brief:
+    1. HERO      - your name + one line about you
+    2. WORK      - a grid of your projects       (required)
+    3. ABOUT     - a short paragraph about you    (required)
+
+  Anywhere you see the word REPLACE, that is content for YOU
+  to change. Don't leave any REPLACE text in your final site!
+
+  TIP: Ask Claude things like
+    "Change the hero heading to my name and make the subtitle
+     say I'm a photography student."
+  =============================================================
+-->
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <!-- This meta tag is what makes the site work on phones. Leave it in. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- REPLACE: the browser tab title -->
+  <title>Charlie Pegg — Portfolio</title>
+
+  <!-- REPLACE: a one-line description search engines show -->
+  <meta name="description" content="Portfolio of Charlie Pegg, a design student at Te Herenga Waka." />
+
+  <!-- The little icon in the browser tab (your sketch). -->
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Skip link: lets keyboard users jump straight to the main content
+       instead of tabbing through the menu. It's hidden until focused. -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== INTRO SCREEN =====================
+       Your name artwork fills the first screen. It's fixed in place and
+       script.js shrinks and fades it as the visitor scrolls. It's
+       decoration only (the real name is in the heading below), so it's
+       hidden from screen readers. The spacer gives the page one screen
+       of height so there's something to scroll through. -->
+  <div class="intro" aria-hidden="true">
+    <!-- Three layers drawn on the same canvas so they line up: your name,
+         the white text, and the arrow (which bounces). They shrink together. -->
+    <div class="intro__stage">
+      <img src="assets/hero-name.png" alt="" />
+      <img src="assets/hero-text.png" alt="" />
+      <img class="intro__arrow" src="assets/hero-arrow.png" alt="" />
+      <!-- The two little sketches (they flip between tilting left and right) -->
+      <img class="intro__sketch intro__sketch--tablet" src="assets/hero-tablet.png" alt="" />
+      <img class="intro__sketch intro__sketch--character" src="assets/hero-character.png" alt="" />
+    </div>
+  </div>
+  <div class="intro-spacer"></div>
+
+
+  <!-- ===================== NAVIGATION BAR ===================== -->
+  <header class="site-header">
+    <div class="container nav">
+      <!-- REPLACE: your name / logo text -->
+      <a href="index.html" class="nav__logo">Charlie Pegg</a>
+
+      <!-- The button below only shows on small screens (phones). -->
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav__links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== 1. HERO ===================== -->
+    <section class="hero container">
+      <p class="hero__eyebrow"></p>
+      <!-- REPLACE: your name -->
+      <!-- The big name artwork is hidden from screen readers, so this heading carries the name for them.
+           "visually-hidden" keeps it off the screen but still readable by screen readers. -->
+      <h1 class="hero__title visually-hidden">Charlie Pegg</h1>
+      <!-- REPLACE: one sentence about what you do -->
+      <p class="hero__subtitle">
+        
+      </p>
+    </section>
+
+    <!-- ===================== 2. WORK / PROJECTS (required) ===================== -->
+    <section id="work" class="section container">
+      <!-- Little sketch in the top-right corner of this section. It tilts left and right like the ones on the opening screen. -->
+      <img class="work-sketch" src="assets/work-sketch.png" alt="" aria-hidden="true" />
+      <!-- The heading is still a real <h2>, so screen readers read "Work". -->
+      <h2 class="section__title section__title--image"><img src="assets/work-title.png" alt="Work" /></h2>
+      <p class="section__intro">
+        Since starting my design degree at Vic Uni, many doors have been opened for me. Character design, game design, photography, posters, graphic design, animation, comics, zines, webpages, and even an upcoming GM board I'm making, I love it all! It has also taught me that even when one door closes, you'll always find another that opens. So, if one of these doors is not to your liking, you might want to look at another. They move on their own, but you can scroll through them if you saw one you thought was interesting and wanted to jump to it.
+      </p>
+
+      <!--
+        There is ONE project card below to get you started. Each card links
+        to its own project page (see project.html).
+
+        ★ EASIEST WAY TO ADD ANOTHER PROJECT:
+          Just tell Claude:  "add another project"
+          Claude will make a new card here AND a new project page, and link
+          them together for you.
+
+        (Prefer to do it by hand? Copy the whole <a class="card">...</a>
+        block below, paste it, and point its href at a new page.)
+      -->
+      <!-- The doors sit in a row that slowly slides sideways in a loop (script.js
+           makes a second copy of the row so the loop has no gap). -->
+      <div class="door-loop">
+      <div class="door-loop__track">
+
+        <!-- PROJECT 1 -->
+        <a class="card" href="project-6.html">
+          <div class="card__door">
+            <!-- The poster behind the door. It shows when the door opens. -->
+            <img class="card__photo" src="assets/project-6.jpg" alt="Poster reading Beware the Vampire!: a black and white photo of a wide-eyed person with dark hair and a trickle of blood at their lip, beneath huge dripping red letters, with small text asking people to report vampire sightings to a vampire hunter or call 0800 VAMPIRE, and the logo of The Hunter Institute" />
+            <img class="card__door-img card__door-img--closed" src="assets/door-closed-vampire.webp" alt="" />
+            <img class="card__door-img card__door-img--open" src="assets/door-open.webp" alt="" />
+          </div>
+          <!-- The door drawing already shows these words, so this copy is for screen readers only. -->
+          <div class="card__body visually-hidden">
+            <h3 class="card__title">Beware the Vampire</h3>
+            <p class="card__meta">Poster · 2026</p>
+          </div>
+        </a>
+
+        <!-- PROJECT 2 -->
+        <a class="card" href="project-5.html">
+          <div class="card__door">
+            <!-- The poster behind the door. It shows when the door opens. -->
+            <img class="card__photo" src="assets/project-5.jpg" alt="Poster reading Collaborate with Nature: a person carrying a yellow bucket walks along a red-brown forest path as a black and white bird flies towards a large yellow beehive hanging from a tree, with the word NATURE painted large across the path, and small text about people working alongside the Honeyguide bird for hundreds of thousands of years, ending Humanity can find ways to collaborate with nature again" />
+            <img class="card__door-img card__door-img--closed" src="assets/door-closed-nature.webp" alt="" />
+            <img class="card__door-img card__door-img--open" src="assets/door-open.webp" alt="" />
+          </div>
+          <!-- The door drawing already shows these words, so this copy is for screen readers only. -->
+          <div class="card__body visually-hidden">
+            <h3 class="card__title">Collaborate with Nature</h3>
+            <p class="card__meta">Poster · 2026</p>
+          </div>
+        </a>
+
+        <!-- PROJECT 3 -->
+        <a class="card" href="project-3.html">
+          <div class="card__door">
+            <!-- The image behind the door. It shows when the door opens. object-position picks which slice of the wide picture fits the tall doorway. -->
+            <img class="card__photo card__photo--slice" src="assets/project-3.jpg" alt="Night-time drawing of a large grey building with many lit windows, at the top of a stepped garden with mountains behind it and a starry sky above, with red staining across the ground and walls" />
+            <img class="card__door-img card__door-img--closed" src="assets/door-closed-jansen.webp" alt="" />
+            <img class="card__door-img card__door-img--open" src="assets/door-open.webp" alt="" />
+          </div>
+          <!-- The door drawing already shows these words, so this copy is for screen readers only. -->
+          <div class="card__body visually-hidden">
+            <h3 class="card__title">The Curious Case of the Jansen Mansion Murders</h3>
+            <p class="card__meta">C.Y.O.A Game · 2026</p>
+          </div>
+        </a>
+
+        <!-- PROJECT 4 -->
+        <a class="card" href="project-2.html">
+          <div class="card__door">
+            <!-- The poster sits behind the door and shows when the door opens. -->
+            <img class="card__photo card__photo--contain" src="assets/ouroboros.jpg" alt="Poster for Ouroboros, a photography zine by Charlie Pegg, 12.2.25 to 24.10.25: a portrait of a person with shoulder-length hair sitting in front of a dark curtain, with another person's shoulder out of focus in the foreground" />
+            <img class="card__door-img card__door-img--closed" src="assets/door-closed-ouroboros.webp" alt="" />
+            <img class="card__door-img card__door-img--open" src="assets/door-open.webp" alt="" />
+          </div>
+          <!-- The door drawing already shows these words, so this copy is for screen readers only. -->
+          <div class="card__body visually-hidden">
+            <h3 class="card__title">Ouroboros</h3>
+            <p class="card__meta">Photography Zine · 2026</p>
+          </div>
+        </a>
+
+        <!-- PROJECT 5 -->
+        <a class="card" href="project-4.html">
+          <div class="card__door">
+            <!-- The cover image behind the door. It shows when the door opens. -->
+            <img class="card__photo" src="assets/project-4.jpg" alt="Cover of Forever ends in the Fall, written and illustrated by Charlie Pegg: a pale hand reaching out of a white sleeve, holding a pink and white flower, against a black background" />
+            <img class="card__door-img card__door-img--closed" src="assets/door-closed-forever.webp" alt="" />
+            <img class="card__door-img card__door-img--open" src="assets/door-open.webp" alt="" />
+          </div>
+          <!-- The door drawing already shows these words, so this copy is for screen readers only. -->
+          <div class="card__body visually-hidden">
+            <h3 class="card__title">Forever ends in the Fall</h3>
+            <p class="card__meta">Short graphic novel · 2026</p>
+          </div>
+        </a>
+
+        <!-- PROJECT 6 -->
+        <a class="card" href="project.html">
+          <div class="card__door">
+            <!-- The project photo sits behind the door. It shows when the door opens. -->
+            <img class="card__photo" src="assets/rowan.jpg" alt="Character design of Rowan: a tall figure in a white, blood-stained veil with dark horn-like branches over the eyes, grey armour, red flowers, and a long torn black and white robe fading to red, standing barefoot with vines wrapped around the ankles" />
+            <img class="card__door-img card__door-img--closed" src="assets/door-closed.webp" alt="" />
+            <img class="card__door-img card__door-img--open" src="assets/door-open.webp" alt="" />
+          </div>
+          <!-- The door drawing already shows these words, so this copy is for screen readers only. -->
+          <div class="card__body visually-hidden">
+            <h3 class="card__title">Rowan</h3>
+            <p class="card__meta">Character Design · 2026</p>
+          </div>
+        </a>
+
+
+        <!-- Coming soon door: not a link, so it has no project page. -->
+        <div class="card card--blank">
+          <div class="card__door">
+            <img class="card__door-img" src="assets/door-coming-soon.webp" alt="Coming soon: a purple door wrapped in yellow tape" />
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </section>
+
+    <!-- ===================== 3. ABOUT ME (required) ===================== -->
+    <section id="about" class="section container">
+      <h2 class="section__title section__title--image section__title--with-sketch"><img class="section__title-img--about" src="assets/about-title.png" alt="About me" /><!-- The little sketch beside the title. It tilts left and right like the other sketches. -->
+        <img class="about-sketch" src="assets/about-sketch.png" alt="" aria-hidden="true" /></h2>
+      <div class="about">
+        <!-- REPLACE the placeholder image in the assets folder,
+             or ask Claude to swap in your own photo. -->
+        <img
+          class="about__photo"
+          src="assets/profile.jpg"
+          alt="Charlie wearing dark-framed glasses, touching the frame with one hand and smiling slightly, in front of a colourful patterned curtain"
+        />
+        <div class="about__text">
+          <!-- REPLACE: 2-4 sentences about you. Who are you? What are you
+               studying? What kind of design do you care about? -->
+          <p>
+            Kia ora, my name is Charlie. I'm a first year Communication and Game Design student at Victoria University. For me, I love using design as a medium to tell stories - from the ones that make you laugh to the ones that make you cry. I'm especially fascinated with how visual communication and design can strengthen the stories you tell and the characters you make, with some of my favourite designs being ones that excel at telling you so much about something with a glance, and I dream of being able to master that skill.
+          </p>
+          <p>
+            If you want to contact me, email me at charliepegg504@gmail.com
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <!-- The year fills in automatically (see script.js). -->
+      <p>© <span id="year"></span> Charlie Pegg</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

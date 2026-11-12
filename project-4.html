@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+  =============================================================
+  PROJECT PAGE 4  (project-4.html)  -  Forever ends in the Fall
+  =============================================================
+  The page for the fourth project door on the home page. It's built the same
+  way as the other project pages: a title, images and a description.
+  Anywhere you see REPLACE, that is content for YOU to write.
+  =============================================================
+-->
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forever ends in the Fall — Charlie Pegg</title>
+  <!-- REPLACE: a one-line description search engines show -->
+  <meta name="description" content="Forever ends in the Fall, a short graphic novel written and illustrated by Charlie Pegg" />
+  <!-- The little icon in the browser tab (your sketch). -->
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Skip link: lets keyboard users jump straight to the main content. -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Same nav as the other pages. The logo links home. -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="nav__logo">Charlie Pegg</a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="section container project">
+
+      <!-- A solid #0a0a0a box behind the text, so it stays readable over the background artwork. -->
+      <div class="project__panel">
+        <!-- A link back to the list of projects -->
+        <a class="project__back" href="index.html#work">← Back to work</a>
+
+        <h1 class="project__title"><img class="project__title-img project__title-img--forever" src="assets/forever-title.png" alt="Forever ends in the Fall" /></h1>
+
+        <!-- REPLACE: short facts about the project -->
+        <p class="project__meta">Short graphic novel · 2026</p>
+
+        <!-- ===== PROJECT DESCRIPTION ===== -->
+        <div class="project__description">
+          <!-- REPLACE: describe your project. What is it? Why did you make
+               it? How did you make it? What are you proud of? -->
+          <p>
+            Stories, don't you love them? I sure do. I especially love when I get the opportunity to take my TTRPG characters and give them a little comic. <strong>That's what this project, Forever ends in the Fall, is all about!</strong> It's a short comic about the tragic love story of my V:TM character Owen and his only lover Jean. <strong>With this project, I aimed to capture the feeling of budding love and the sadness of losing it, showing it through the flower and the changing of the seasons leading up to the tragic event.</strong> (P.S, if you're wondering why the Autumn season is referred to as 'Fall', it's because this character is from North America.)
+          </p>
+
+           <p>
+            <strong>Skills utilised for this project: Character design - Illustration - MediBang - Photoshop - Affinity - Layout</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- ===== THE ZINE ===== -->
+      <!-- A page-turning viewer, the same one the Ouroboros page uses. script.js builds the pages from
+           the images in assets/forever-zine/ (page-01.jpg is the cover, page-02 to page-06 are the
+           double-page spreads, page-07 is the back cover). The full PDF is there to download underneath. -->
+      <section class="project__panel project__pdf-box" aria-labelledby="zine-heading">
+        <h2 id="zine-heading" class="visually-hidden">The Forever ends in the Fall zine</h2>
+
+        <!-- The book and its buttons live in one wrapper, so "Enlarge to fit screen" can fill the screen with both. -->
+        <div class="flipbook-wrap">
+          <div class="flipbook" id="zine" role="group" aria-roledescription="book" aria-label="The Forever ends in the Fall zine. Use the buttons, click the pages, or use the left and right arrow keys to turn the pages."
+               tabindex="0" data-path="assets/forever-zine/page-" data-ext=".jpg" data-count="7">
+            <div class="flipbook__book">
+              <!-- Shows in the empty left-hand side while the zine is closed on its cover. -->
+              <p class="flipbook__hint">Click to read through the graphic novel</p>
+            </div>
+            <noscript><p>The page-turning viewer needs JavaScript. Use the download link below to read the zine.</p></noscript>
+          </div>
+
+          <div class="flipbook__controls">
+            <button type="button" class="flipbook__button" data-flip="prev" aria-controls="zine">&#8249; Previous</button>
+            <span class="flipbook__status" role="status" aria-live="polite">Cover</span>
+            <button type="button" class="flipbook__button" data-flip="next" aria-controls="zine">Next &#8250;</button>
+            <button type="button" class="flipbook__button flipbook__enlarge" data-flip="enlarge" hidden>Enlarge to fit screen</button>
+          </div>
+
+          <!-- Jump controls: "Back to start" and a page index. They stay hidden until the script is working. -->
+          <div class="flipbook__jump" hidden>
+            <button type="button" class="flipbook__button" data-flip="start" aria-controls="zine">&#8634; Back to start</button>
+            <label for="zine-jump" class="flipbook__label">Jump to</label>
+            <select id="zine-jump" class="flipbook__select" aria-controls="zine">
+              <option value="">Choose a page&hellip;</option>
+              <option value="0">Cover</option>
+              <option value="1">Pages 1–2</option>
+              <option value="2">Pages 3–4</option>
+              <option value="3">Pages 5–6</option>
+              <option value="4">Pages 7–8</option>
+              <option value="5">Pages 9–10</option>
+              <option value="6">Back cover</option>
+            </select>
+          </div>
+        </div>
+
+        <a class="project__download" href="assets/Forever-zine.pdf" download>Download the Forever ends in the Fall zine (PDF, 8.5 MB)</a>
+      </section>
+
+      <!-- ===== PROJECT WORKBOOK ===== -->
+      <!-- The same click-through viewer as the Vampire page. script.js reads the data-path / data-ext /
+           data-count below to find assets/forever-workbook/page-01.jpg to page-04.jpg. -->
+      <section class="project__notes workbook" aria-labelledby="workbook-heading">
+        <h2 id="workbook-heading">Project workbook</h2>
+        <p class="workbook__hint">Click the page, or use Next and the left and right arrow keys, to read through the workbook.</p>
+        <div class="workbook__viewer" id="workbook" data-path="assets/forever-workbook/page-" data-ext="jpg" data-count="4">
+          <!-- REPLACE: the alt text for pages 2 to 4 is generic. Describe each page if you can. -->
+          <img class="workbook__page" src="assets/forever-workbook/page-01.jpg" alt="Workbook page 1 of 4: the cover, reading Forever ends in the Fall, Project Workbook" width="2800" height="1980" />
+        </div>
+        <div class="flipbook__controls">
+          <button type="button" class="flipbook__button" id="workbook-first">Back to start</button>
+          <button type="button" class="flipbook__button" id="workbook-prev">Previous</button>
+          <span class="flipbook__status" id="workbook-status" aria-live="polite">Page 1 of 4</span>
+          <button type="button" class="flipbook__button" id="workbook-next">Next</button>
+          <button type="button" class="flipbook__button" id="workbook-enlarge" aria-haspopup="dialog">Enlarge</button>
+        </div>
+        <a class="project__download" href="assets/Forever-workbook.pdf" download>Download the workbook (PDF, 4.6 MB)</a>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Charlie Pegg</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

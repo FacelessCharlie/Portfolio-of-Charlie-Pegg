@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+  =============================================================
+  PROJECT PAGE 6  (project-6.html)  -  Beware the Vampire
+  =============================================================
+  The page for the sixth project door on the home page. It's built the same
+  way as the other project pages: a title, images and a description.
+  Anywhere you see REPLACE, that is content for YOU to write.
+  =============================================================
+-->
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beware the Vampire — Charlie Pegg</title>
+  <!-- REPLACE: a one-line description search engines show -->
+  <meta name="description" content="Beware the Vampire, a supernatural PSA poster project designed by Charlie Pegg" />
+  <!-- The little icon in the browser tab (your sketch). -->
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Skip link: lets keyboard users jump straight to the main content. -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Same nav as the other pages. The logo links home. -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="nav__logo">Charlie Pegg</a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="section container project">
+
+      <!-- A solid #0a0a0a box behind the text, so it stays readable over the background artwork. -->
+      <div class="project__panel">
+        <!-- The poster, floated to the right inside the box so the title and text sit beside it.
+             "data-enlarge" tells script.js that clicking it should open it large. -->
+        <img class="project__panel-image" data-enlarge src="assets/vampire-poster.jpg" alt="Poster reading BEWARE THE VAMPIRE! in large red letters above a black and white photo of a wide-eyed person with long hair and blood at their mouth, leaning over a person in a dark waistcoat. Red text asks people to report vampiric activity to their closest vampire hunter or call 0800 VAMPIRE, to look out for fangs, vicious bites to the neck and aversion to sunlight, and not to engage with a vampire. The Hunter Institute logo sits below the text." />
+
+        <!-- A link back to the list of projects -->
+        <a class="project__back" href="index.html#work">← Back to work</a>
+
+        <h1 class="project__title"><img class="project__title-img project__title-img--vampire" src="assets/vampire-title.png" alt="Beware the Vampire" /></h1>
+
+        <p class="project__meta">Poster · 2026</p>
+
+        <!-- ===== PROJECT DESCRIPTION ===== -->
+        <div class="project__description">
+          <!-- REPLACE: describe your project. What is it? Why did you make
+               it? How did you make it? What are you proud of? -->
+          <p>
+            <strong>Vampires!</strong> Whether you love them or you hate them, they are part of our cultural zeitgeist and they're here to stay. And for as long as there's been vampires, there's been vampire hunters, <strong>and they need the public to be wary of them and report them to the proper authorities</strong> (the proper authorities being them). <strong>That is what is at the core of this project, Beware the Vampire!</strong> Since my friend group was unable to host sessions for a while because we were all busy, I wanted to have my class' poster project be vampire related in some way. <strong>Therefore, this project's goal was to make a PSA poster that warns the public about the danger of vampires, and to figure out what ways I could communicate that sense of danger if vampires were an actual threat.</strong>
+          </p>
+		  
+		  <p>
+		  	<strong>Skills utilised for this project: Photography - Typography - Affinity - Iteration - Layout</strong>
+		  </p>
+        </div>
+      </div>
+
+      <!-- The poster is the image that shows behind the door on the home page. -->
+      <!-- ===== PROJECT WORKBOOK ===== -->
+      <section class="project__notes workbook" aria-labelledby="workbook-heading">
+        <h2 id="workbook-heading">Project workbook</h2>
+        <p class="workbook__hint">Click Next, or use the left and right arrow keys, to read through the workbook.</p>
+        <div class="workbook__viewer" id="workbook" data-path="assets/vampire-workbook/page-" data-ext="jpg" data-count="20">
+          <!-- REPLACE: the alt text below is generic. Describe each page if you can. -->
+          <img class="workbook__page" src="assets/vampire-workbook/page-01.jpg" alt="Workbook page 1 of 20: the cover, reading Beware the Vampire! Project workbook" width="2800" height="1980" />
+        </div>
+        <div class="flipbook__controls">
+          <button type="button" class="flipbook__button" id="workbook-first">Back to start</button>
+          <button type="button" class="flipbook__button" id="workbook-prev">Previous</button>
+          <span class="flipbook__status" id="workbook-status" aria-live="polite">Page 1 of 20</span>
+          <button type="button" class="flipbook__button" id="workbook-next">Next</button>
+          <button type="button" class="flipbook__button" id="workbook-enlarge" aria-haspopup="dialog">Enlarge</button>
+        </div>
+        <a class="project__download" href="assets/Vampire-Workbook.pdf" download>Download the workbook (PDF, 10.6 MB)</a>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Charlie Pegg</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

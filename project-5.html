@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+  =============================================================
+  PROJECT PAGE 5  (project-5.html)  -  Collaborate with Nature
+  =============================================================
+  The page for the fifth project door on the home page. It's built the same
+  way as the other project pages: a title, images and a description.
+  Anywhere you see REPLACE, that is content for YOU to write.
+  =============================================================
+-->
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collaborate with Nature — Charlie Pegg</title>
+  <!-- REPLACE: a one-line description search engines show -->
+  <meta name="description" content="Collaborate with Nature, a joyful poster project done by Charlie Pegg" />
+  <!-- The little icon in the browser tab (your sketch). -->
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Skip link: lets keyboard users jump straight to the main content. -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Same nav as the other pages. The logo links home. -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="nav__logo">Charlie Pegg</a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="section container project">
+
+      <!-- A solid #0a0a0a box behind the text, so it stays readable over the background artwork. -->
+      <div class="project__panel">
+        <!-- The poster, floated to the right inside the box so the title and text sit beside it.
+             "data-enlarge" tells script.js that clicking it should open it large. -->
+        <img class="project__panel-image" data-enlarge src="assets/collab-poster.jpg" alt="Poster for Collaborate with Nature: a smiling person carrying a small bucket walks along an orange dirt path through a forest, while a black-and-white Honeyguide bird flies beside a large yellow beehive hanging from a tree branch. The words 'Collaborate with' are written in bright green letters across the top, with the word NATURE written in the dirt below. There is a small bush in the bottom right that has some informational text written in yellow." />
+
+        <!-- A link back to the list of projects -->
+        <a class="project__back" href="index.html#work">← Back to work</a>
+
+        <h1 class="project__title"><img class="project__title-img project__title-img--collab" src="assets/collab-title.png" alt="Collaborate with Nature" /></h1>
+
+        <p class="project__meta">Poster · 2026</p>
+
+        <!-- ===== PROJECT DESCRIPTION ===== -->
+        <div class="project__description">
+          <!-- REPLACE: describe your project. What is it? Why did you make
+               it? How did you make it? What are you proud of? -->
+          <p>
+            With the world in such a sad state, it can feel especially hard to have any semblance of hope left in humanity. This is even more true for young people, who will have to inherit this world and navigate it. And with all the doom and gloom about, <strong>I wanted to show a small bit of joy to break up the hopelessness, while also showing that humanity can find ways to collaborate with nature.</strong> And so, for this project, it was all about figuring out how to do that, which I did through the ancient, symbiotic relationship between humans and the Honeyguide. <strong>Building off of the value 'Whanaungatanga', I created a joyful and mildly educational poster to give a bit of hope back to the people.</strong>
+          </p>
+		  
+		  <p>
+		  	<strong>Skills utilised in this project: Illustration - Affinity - MediBang - Iteration - Layout</strong>
+		  </p>
+        </div>
+      </div>
+
+      <!-- ===== PROJECT WORKBOOK ===== -->
+      <section class="project__notes workbook" aria-labelledby="workbook-heading">
+        <h2 id="workbook-heading">Project workbook</h2>
+        <p class="workbook__hint">Click the page, or use Next and the left and right arrow keys, to read through the workbook.</p>
+        <div class="workbook__viewer workbook__viewer--portrait" id="workbook" data-path="assets/nature-workbook/page-" data-ext="jpg" data-count="10">
+          <!-- REPLACE: the alt text for pages 2 to 10 is generic. Describe each page if you can. -->
+          <img class="workbook__page" src="assets/nature-workbook/page-01.jpg" alt="Workbook page 1 of 10: the cover, reading Collaborate with Nature, Workbook" width="1200" height="1697" />
+        </div>
+        <div class="flipbook__controls">
+          <button type="button" class="flipbook__button" id="workbook-first">Back to start</button>
+          <button type="button" class="flipbook__button" id="workbook-prev">Previous</button>
+          <span class="flipbook__status" id="workbook-status" aria-live="polite">Page 1 of 10</span>
+          <button type="button" class="flipbook__button" id="workbook-next">Next</button>
+          <button type="button" class="flipbook__button" id="workbook-enlarge" aria-haspopup="dialog">Enlarge</button>
+        </div>
+        <a class="project__download" href="assets/Collaborate-With-Nature-Workbook.pdf" download>Download the workbook (PDF, 2.6 MB)</a>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Charlie Pegg</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

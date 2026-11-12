@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!--
+  =============================================================
+  PROJECT PAGE 2  (project-2.html)  -  Ouroboros
+  =============================================================
+  The page for the Ouroboros door on the home page. It's built the same
+  way as project.html: a title, images and a description.
+  Anywhere you see REPLACE, that is content for YOU to write.
+  =============================================================
+-->
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ouroboros — Charlie Pegg</title>
+  <meta name="description" content="Ouroboros, a photography zine by Charlie Pegg, 2026." />
+  <!-- The little icon in the browser tab (your sketch). -->
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Skip link: lets keyboard users jump straight to the main content. -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Same nav as the other pages. The logo links home. -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="nav__logo">Charlie Pegg</a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="section container project">
+
+      <!-- A solid #0a0a0a box behind the text, so it stays readable over the background artwork. -->
+      <div class="project__panel">
+        <!-- The Ouroboros poster, floated to the right inside the box so the text wraps around it. -->
+        <img class="project__panel-image" src="assets/ouroboros.jpg" alt="Front page for Ouroboros, a photography zine by Charlie Pegg, 12.2.25 to 24.10.25: a portrait of a person with shoulder-length hair sitting in front of a dark curtain, with another person's shoulder out of focus in the foreground" />
+
+        <!-- A link back to the list of projects -->
+        <a class="project__back" href="index.html#work">← Back to work</a>
+
+        <h1 class="project__title"><img class="project__title-img project__title-img--ouroboros" src="assets/ouroboros-title.png" alt="Ouroboros" /></h1>
+
+        <p class="project__meta">Photography Zine · 2026</p>
+
+        <!-- ===== PROJECT DESCRIPTION ===== -->
+        <div class="project__description">
+          <!-- REPLACE: describe your project. What is it? Why did you make
+               it? How did you make it? What are you proud of? -->
+          <p>
+            This is one of the projects I hold close to my heart as it was about the struggles with escapism I went through in 2025. When we were tasked with creating a photography zine where we were free to pick the subject matter it was about, I decided it was time to actually look at what I went through mentally. <strong>And thus, Ouroboros was born,</strong> a perzine all about my eight months of escapism from February 12th to October 24th, using notes I wrote during that time and experiences I remembered as the basis for how I would make it.
+          </p>
+          
+          <p>
+            <strong>Skills utilised for this project: Photography using a Nikon D3500 - Affinity - Layout</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- ===== THE ZINE ===== -->
+      <!-- A page-turning viewer. script.js builds the pages from the images in assets/ouroboros-zine/
+           (page-01.webp is the cover, page-02 to page-16 are the double-page spreads, page-17 is the back
+           cover). The full PDF is still there to download underneath. -->
+      <section class="project__panel project__pdf-box" aria-labelledby="zine-heading">
+        <h2 id="zine-heading" class="visually-hidden">The Ouroboros zine</h2>
+
+        <!-- The book and its buttons live in one wrapper, so "Enlarge to fit screen" can fill the screen with both. -->
+        <div class="flipbook-wrap">
+          <div class="flipbook" id="zine" role="group" aria-roledescription="book" aria-label="The Ouroboros zine. Use the buttons, click the pages, or use the left and right arrow keys to turn the pages."
+               tabindex="0" data-path="assets/ouroboros-zine/page-" data-ext=".webp" data-count="17">
+            <div class="flipbook__book">
+              <!-- Shows in the empty left-hand side while the zine is closed on its cover. -->
+              <p class="flipbook__hint">Click to read through the zine</p>
+            </div>
+            <noscript><p>The page-turning viewer needs JavaScript. Use the download link below to read the zine.</p></noscript>
+          </div>
+
+          <div class="flipbook__controls">
+            <button type="button" class="flipbook__button" data-flip="prev" aria-controls="zine">&#8249; Previous</button>
+            <span class="flipbook__status" role="status" aria-live="polite">Cover</span>
+            <button type="button" class="flipbook__button" data-flip="next" aria-controls="zine">Next &#8250;</button>
+            <button type="button" class="flipbook__button flipbook__enlarge" data-flip="enlarge" hidden>Enlarge to fit screen</button>
+          </div>
+
+          <!-- Jump controls: "Back to start" and a page index. They stay hidden until the script is working. -->
+          <div class="flipbook__jump" hidden>
+            <button type="button" class="flipbook__button" data-flip="start" aria-controls="zine">&#8634; Back to start</button>
+            <label for="zine-jump" class="flipbook__label">Jump to</label>
+            <select id="zine-jump" class="flipbook__select" aria-controls="zine">
+              <option value="">Choose a page&hellip;</option>
+              <option value="0">Cover</option>
+              <optgroup label="Contents (the zine's own table of contents)">
+                <option value="2">Pg. 3 – Eternity.</option>
+                <option value="2">Pg. 4 – Rationale.</option>
+                <option value="3">Pg. 5 – A walk into new life...</option>
+                <option value="4">Pg. 7 – Sunset.</option>
+                <option value="5">Pg. 9 – We dream of what we don't have, I dream of my life.</option>
+                <option value="6">Pg. 11 – Someone needs an apology.</option>
+                <option value="6">Pg. 12 – An unfortunate meeting.</option>
+                <option value="7">Pg. 13 – So close to Heaven, so close to Hell.</option>
+                <option value="8">Pg. 15 – Cognitive dissonance.</option>
+                <option value="8">Pg. 16 – Destiny.</option>
+                <option value="9">Pg. 18 – Young Girl A.</option>
+                <option value="10">Pg. 19 – I still want to be a part of this world.</option>
+                <option value="11">Pg. 21 – ...A walk into same death...</option>
+                <option value="12">Pg. 23 – Damned.</option>
+                <option value="13">Pg. 25 – Gifted child.</option>
+                <option value="14">Pg. 27 – ...Either way, I find no success.</option>
+                <option value="15">Pg. 29 – Closing remarks.</option>
+              </optgroup>
+              <optgroup label="Every spread">
+                <option value="1">Pages 1–2</option>
+                <option value="2">Pages 3–4</option>
+                <option value="3">Pages 5–6</option>
+                <option value="4">Pages 7–8</option>
+                <option value="5">Pages 9–10</option>
+                <option value="6">Pages 11–12</option>
+                <option value="7">Pages 13–14</option>
+                <option value="8">Pages 15–16</option>
+                <option value="9">Pages 17–18</option>
+                <option value="10">Pages 19–20</option>
+                <option value="11">Pages 21–22</option>
+                <option value="12">Pages 23–24</option>
+                <option value="13">Pages 25–26</option>
+                <option value="14">Pages 27–28</option>
+                <option value="15">Pages 29–30</option>
+              </optgroup>
+              <option value="16">Back cover</option>
+            </select>
+          </div>
+        </div>
+
+        <a class="project__download" href="assets/Ouroboros-Zine.pdf" download>Download the Ouroboros zine (PDF, 9.4 MB)</a>
+      </section>
+
+      <!-- ===== SMALL TEXT BOXES ===== -->
+      <!-- 14 small boxes in a grid. Each has a title above it and a short note inside.
+           Change the "REPLACE" text in each one. To add or remove a box, copy or delete a whole
+           <div class="notegrid__item"> ... </div> block. -->
+      <section class="project__notes notegrid" aria-labelledby="notegrid-heading">
+        <h2 id="notegrid-heading">Notes explaining the thought behind the different photos</h2>
+        <div class="notegrid__list">
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">A walk into new life...</h3>
+            <div class="notegrid__box"><p>For this photo set, I wanted to show me walking away from my high school years with me walking away from the white shirt. I did this to show how it was meant to be the beginning of something new, but also so when the white shirt reappears, we can see that it is related to the past in some way.</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">Sunset</h3>
+            <div class="notegrid__box"><p>As my escapism slowly progressed, I found myself staying up later and later, to the point I would wake at 5pm and sleep at 7am. Sunset was shot as me holding up the moon, because the moon had become the equivalent of my sun during that time.</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">We dream of what we don't have, I dream of my life</h3>
+            <div class="notegrid__box"><p>Beyond the slow time warping I was experiencing, I also found that I actually craved my time in high school again because I had absolutely nothing to do. A common motif I had when I thought about it was of my past sleeping peacefully while I watched and lived through them because I had nothing to do despite me knowing I was really stressed in high school, but me doing nothing made me want the stress because it wasn't this empty life.</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">Someone needs an apology</h3>
+            <div class="notegrid__box"><p>During my time spent endlessly reliving my days, I found myself thinking about me when I was a child more and more. As I did, I kind of realised that there was actually a fair bit of hurt my inner child still carried that I didn't acknowledge because I kept pushing it away. I also kind of realised that part of that refusal to acknowledge it also led to my current situation where I couldn't figure out how to deal with my emotions anymore because I kept ignoring them. I did this photo specifically to acknowledge that bit that needed to hear it. </p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">An unfortunate meeting</h3>
+            <div class="notegrid__box"><p>I had started wondering what my high school self would think if they met the me I had become. Would they be disappointed? Angry? Disgusted? I would've felt bad either way because regardless of what that piece of me thought, it would probably still be doomed to become this version of me anyway</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">So close to Heaven, so close to Hell</h3>
+            <div class="notegrid__box"><p>At a certain point, part of me wasn't sure how to feel about this anymore. While I was getting a bit sad sometimes before this, it was really starting to come through more. While I found it fun to spend time playing games, after a while I couldn't really enjoy them the same way anymore because everything was all the same. I was close to heaven as I was living what others dream of doing, but I felt like I was getting closer to hell because it began to feel miserable. I had my model pose similarly to the Michelangelo's painting of Adam and God, becuase it felt like my solution was right there, but I had to will to reach for it anymore.</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">Cognitive dissonance</h3>
+            <div class="notegrid__box"><p>By this point, I was becoming more and more miserable because of how the days felt more and more pointless. But despite my mind wanting to change my situation, I wasn't doing anything. It was cognitive dissonance, where I wanted to do something, but didn't have it in me to.</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">Destiny</h3>
+            <div class="notegrid__box"><p>I was starting to wonder if maybe some sort of fate had decided that this was just what life was going to be for me from now on, I was just destined to stay confined to my room and never leave my house as the days went by. Maybe my destiny was never to become anything at all.</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">Young Girl A</h3>
+            <div class="notegrid__box"><p>One day, while I was trying to sort out a job application at my friends request, I felt myself getting overwhelmed. Usually, if I just went and cried, it would help me feel better and then I could do whatever it was I needed to. However, it didn't work anymore. I cried and nothing felt differnt. I had watched myself slip away, and now I didn't care to try to stop it anymore. I titled this one 'Young Girl A' because that was the song I was listening to when this happened, and that song was also a song I related to a lot during that time.</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">I still want to be a part of this world</h3>
+            <div class="notegrid__box"><p>Even though I was giving up around now, it didn't mean I really wanted to disappear from the world, I just didn't feel like there was any other path for me anymore. This photo was inspired by the opening to the book 'The Invisible Life of Addie LaRue', where she keeps trying to write her name in the condensation because she wants to keep trying to be remembered by the world, but was cursed to be endlessly forgotten.</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">...A walk into same death...</h3>
+            <div class="notegrid__box"><p>At this point, I felt like maybe now the only thing that could happen to me was to just die. However, it wasn't something I was actively trying to do because I didn't really want to and it also felt like too much effort. It was more of a "guess this is my path" kind of thing. I had the skipping rope laid out like that so it could resemble the shape of a noose, but not actually be a noose to reflect what my headspace was like.</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">Damned</h3>
+            <div class="notegrid__box"><p>In my head, my fate was now to remain stuck in my escapism until death came or fate decided for something to change. For this one, I wanted to reference the movie Coraline because some people have mentioned that it can be used as a metaphor for escapism - what happens when you go into this small dream world and never come out? For me, it felt like I was letting the buttons be sown into my eyes and accepting a life of escapism.</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">Gifted child</h3>
+            <div class="notegrid__box"><p>This photo was based off of an experience I remembered. I was standing in the kitchen, staring out the window, and it felt like everything was slowly closing in and my mind was screaming at me to do anything, but I instead kept staring outside. I don't know when in the timeline this happened, I just know it happened.</p></div>
+          </div>
+          <div class="notegrid__item">
+            <h3 class="notegrid__title">...Either way, I find no success.</h3>
+            <div class="notegrid__box"><p>I chose to have the zine's final photo be this one because it felt like the best conclusion to the timeline. I didn't live, but at the same time, I didn't die, so overall nothing really happened on either front. And besides, at that point, I was now set in making sure I didn't completely give up because a very important friend of mine made me want to save myself so that they didn't think I lied when I told them how important they were to me. While it may not have been the perfect reason to decide to keep going, it was enough for me to resolve myself. Both the skipping rope and the shirt rest beside the main model, because while I was leaving that headspace, the months of escapism weren't going to go away easy. However, I needed to go forward anyway.</p></div>
+          </div>
+        </div>
+      </section>
+      <!-- ===== PROJECT IMAGES ===== -->
+      <!-- Images of the work will go here later. Ask Claude to "add an image row" and it will
+           add an image with a writing box beside it, matching the Rowan page. -->
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Charlie Pegg</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
